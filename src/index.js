@@ -45,7 +45,7 @@ if (number >=20 && number < 100) {
     return tens[number.toString()[0]];
  }
 else {
-    return tens[number.toString()[0]] + ' ' + array[number.toString()[1]];
+    return tens[stringNumber[0]] + ' ' + array[stringNumber[1]];
  }
 
 if (number > 99 && number < 1000) {
