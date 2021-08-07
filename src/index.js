@@ -3,7 +3,7 @@ module.exports = function toReadable(number) {
         return 'zero';
     }
 
-    const array = {
+    const words = {
         1: 'one',
         2: 'two',
         3: 'three',
@@ -23,8 +23,6 @@ module.exports = function toReadable(number) {
         17: 'seventeen',
         18: 'eighteen',
         19: 'nineteen',
-    }
-    const tens = {
         20: 'twenty',
         30: 'thirty',
         40: 'forty',
@@ -36,27 +34,27 @@ module.exports = function toReadable(number) {
     }
    
 let stringNumber = number.toString();
+let hundreds = '';
 
-if (number > 0 && number <= 19) {
-    return array[number];
+if (number > 0 && number < 20) {
+    return words[number];
  }
 
-if (number >=20 && number < 100) {
-    return tens[number.toString()[0]];
- }
+if (stringNumber.length === 3) {
+    hundreds = words[stringNumber[0]] + ' hundred';
+    stringNumber = stringNumber.slice(1);
+}
+if (stringNumber.length === '00') {
+    return hundreds.trim();
+}
+
+if (words[stringNumber]) {
+    return hundreds + words[stringNumber].trim();
+}
 else {
-    return tens[stringNumber[0]] + ' ' + array[stringNumber[1]];
- }
+    const tens = words[stringNumber[0]] ? `${words[stringNumber[0] * 10]}` : '';
 
-if (number > 99 && number < 1000) {
- if (number % 10 === 0 && number % 100 === 0) {
-return array[stringNumber[0]] + ' hundred';
- }
- if (number % 100 < 20) {
-     return array[stringNumber[0]] + ' hundred' + array[number % 100];
- }
+    const digits = words[stringNumber[1]];
+    return `${hundreds}${tens}${digits}`.trim();
 }
- else {
- return array[stringNumber[0]] + ' hundred' + tens[stringNumber[1]] + ' ' + array[stringNumber[2]];
-}
-}
+};
