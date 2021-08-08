@@ -12,22 +12,21 @@ module.exports = function toReadable (number) {
         6: "six",
         7: "seven",
         8: "eight",
-        9: "nine"};
-    
-        const tens = {
-        1: "eleven",
-        2: "twelve",
-        3: "thirteen",
-        4: "fourteen",
-        5: "fifteen",
-        6: "sixteen",
-        7: "seventeen",
-        8: "eighteen",
-        9: "nineteen"
+        9: "nine",
+        10: "ten",
+        11: "eleven",
+        12: "twelve",
+        13: "thirteen",
+        14: "fourteen",
+        15: "fifteen",
+        16: "sixteen",
+        17: "seventeen",
+        18: "eighteen",
+        19: "nineteen",
         };
        
         const dozens = { 
-            1: "ten",
+           
             2: "twenty",
             3: "thirty",
             4: "forty",
@@ -38,10 +37,15 @@ module.exports = function toReadable (number) {
             9: "ninety",
         };
        
-    const stringNumber = number.toString();
+   const stringNumber = number.toString();
     
     
-    if (stringNumber.length === '3' && stringNumber[1] < '1' && stringNumber[2] < '1'){ // 100 200 300
-           return `${digits[stringNumber[0]]} hundred`;
-       }
+    if (number < 20) {
+        return digits[number];
+     }
+    
+    else if (number >= 20 && number < 100 && stringNumber[1] < 1){  //10 20 30
+         return dozens[stringNumber[0];
+     }
+     
     };
