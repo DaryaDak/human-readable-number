@@ -60,7 +60,7 @@ module.exports = function toReadable (number) {
         return `${digits[stringNumber[0]]} hundred ${dozens[stringNumber[1]]} ${digits[stringNumber[2]]}`;
     }
     //180 340 620
-    else if (number >= 100 && number(stringNumber.slice(2)) === 0){
-        return digits[Math.floor(number/100)] + ' hundred' + dozens[stringNumber.slice(1,2))*10] + ' ' + digits[stringNumber.slice(2)];
+    else if (number < 1000 && number > 99 && stringNumber[2] == 0){
+        return `${digits[stringNumber[0]]} hundred ${dozens[stringNumber[1]]}`;
     }
     };
