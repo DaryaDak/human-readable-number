@@ -45,7 +45,7 @@ module.exports = function toReadable (number) {
         return digits[number];
      }
     
-    else if (stringNumber.length === 2 && stringNumber[1] === '0'){  //10 20 30
+    else if (stringNumber.length === '2' && stringNumber[1] === '0'){  //10 20 30
          return dozens[stringNumber[0]];
      }
 
