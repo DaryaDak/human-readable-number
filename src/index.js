@@ -52,4 +52,5 @@ module.exports = function toReadable (number) {
      }
     else if (number >= 100 && stringNumber[1] === 0 && stringNumber[2] === 0){
         return `${digits[stringNumber[0]]} 'hundred'`;
+    }
     };
