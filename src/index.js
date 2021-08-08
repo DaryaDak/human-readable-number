@@ -3,58 +3,22 @@ module.exports = function toReadable(number) {
         return 'zero';
     }
 
-    const words = {
-        1: 'one',
-        2: 'two',
-        3: 'three',
-        4: 'four',
-        5: 'five',
-        6: 'six',
-        7: 'seven',
-        8: 'eight',
-        9: 'nine',
-        10: 'ten',
-        11: 'eleven',
-        12: 'twelve',
-        13: 'thirteen',
-        14: 'fourteen',
-        15: 'fifteen',
-        16: 'sixteen',
-        17: 'seventeen',
-        18: 'eighteen',
-        19: 'nineteen',
-        20: 'twenty',
-        30: 'thirty',
-        40: 'forty',
-        50: 'fifty',
-        60: 'sixty',
-        70: 'seventy',
-        80: 'eighty',
-        90: 'ninety',
-    }
+    let digits = "one two three four five six seven eight nine ten eleven twelve thirteen fourteen fifteen sixteen seventeen eighteen nineteen".split(" ");
+    let tens = "twenty thirty forty fifty sixty seventy eighty ninety".split(" ");
    
-let stringNumber = number.toString();
-let hundreds = '';
+const stringNumber = number.toString();
+const dec = tens[stringNumber[0]];
+const hundreds = digits[stringNumber[0]];
+const units = digits[stringNumber[1]]; 
 
 if (number > 0 && number < 20) {
-    return words[number];
+    return digits[number];
  }
 
-if (stringNumber.length === 3) {
-    hundreds = words[stringNumber[0]] + ' hundred';
-    stringNumber = stringNumber.slice(1);
-}
-if (stringNumber.length === '00') {
-    return hundreds.trim();
-}
-
-if (words[stringNumber]) {
-    return hundreds + words[stringNumber].trim();
-}
-else {
-    const tens = words[stringNumber[0]] ? `${words[stringNumber[0] * 10]}` : '';
-
-    const digits = words[stringNumber[1]];
-    return `${hundreds}${tens}${digits}`.trim();
-}
+ else if (number >= 20 && number < 100){
+     return `${dec} ${units}`;
+ }
+ else if (stringNumber.length === 3){
+    return `${hundreds} ${dec} ${units}`;
+ }
 };
