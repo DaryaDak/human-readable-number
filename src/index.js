@@ -49,7 +49,7 @@ module.exports = function toReadable (number) {
          return dozens[stringNumber[0]];
      }
      else if (stringNumber.length === '00' && stringNumber[1] === '1'){ //11 14 16
-         return tens[stringNumber];
+         return tens[stringNumber[0];
      }
     
     };
