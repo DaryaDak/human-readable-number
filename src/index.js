@@ -47,11 +47,11 @@ if (stringNumber.length === 1) {
         return digits[number];
      }
     
-     else if (stringNumber.length === '00' && stringNumber[1] === 0){  //10 20 30
+     else if (stringNumber.length === 2 && stringNumber[1] === 0){  //10 20 30
          return dozens[stringNumber[0]];
      }
-     else if (stringNumber.length === '00' && stringNumber[1] === 1){ //11 14 16
-         return tens[stringNumber[0]]
+     else if (stringNumber.length === 2 && stringNumber[1] === 1){ //11 14 16
+         return tens[stringNumber[0]];
      }
      else if {
          return `${dozens[stringNumber[0]]}${digits[stringNumber[1]]}`; //21 44 53
