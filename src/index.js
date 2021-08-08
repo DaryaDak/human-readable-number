@@ -53,7 +53,7 @@ module.exports = function toReadable (number) {
     else if (number >= 100 && stringNumber[1] < 1 && stringNumber[2] < 1){
         return `${digits[stringNumber[0]]} hundred`;
     }
-    else if (number >= 100 && stringNumber[1] > 1 && stringNumber[2] < 1){
+    else if (number >= 100 && stringNumber[1] === 1 && stringNumber[2] < 1){
         return `${digits[stringNumber[0]]} hundred ${digits[stringNumber[0]].slice(1)}`;
     }
     };
