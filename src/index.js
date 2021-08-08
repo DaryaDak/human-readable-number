@@ -53,8 +53,7 @@ module.exports = function toReadable (number) {
     else if (number >= 100 && stringNumber[1] < 1 && stringNumber[2] < 1){
         return `${digits[stringNumber[0]]} hundred`;
     }
-    else if (number >= 100 && stringNumber[1] == 1 && stringNumber[2] == 0){
-        const tens = digits[stringNumber[0]].slice(1);
-        return `${digits[stringNumber[0]]} hundred ${tens}`;
+    else if (number >= 100 && stringNumber[1] > 1 && stringNumber[2] >= 1){
+        return `${digits[stringNumber[0]]} hundred ${dozens[stringNumber[1]] ${digits[stringNumber[2]]`;
     }
     };
