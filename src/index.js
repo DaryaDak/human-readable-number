@@ -47,7 +47,7 @@ if (stringNumber.length === 1) {
     return digits[number];
  }
 
- if (stringNumber.length === 2 && stringNumber[1] < 1){  //10 20 30
+ if (stringNumber.length === '00' && stringNumber[1] < 1){  //10 20 30
      return dozens[stringNumber[0]];;
  }
 
