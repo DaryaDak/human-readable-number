@@ -48,8 +48,7 @@ module.exports = function toReadable (number) {
     else if (stringNumber.length === '2' && stringNumber[1] === '0'){  //10 20 30
          return dozens[stringNumber[0]];
      }
-
-         else if (stringNumber.length === '2' && stringNumber[0] === '1'){
-         return tens[stringNumber];
-     }
+else if (stringNumber.length === '3' && stringNumber[1] === '0' && stringNumber[2] === '0'){ // 100 200 300
+           return `${digits[stringNumber[0]]} hundred`;
+       }
     };
