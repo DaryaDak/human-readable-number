@@ -12,53 +12,65 @@ module.exports = function toReadable(number) {
     6: "six",
     7: "seven",
     8: "eight",
-    9: "nine",
-    10: "ten",
-    11: "eleven",
-    12: "twelve",
-    13: "thirteen",
-    14: "fourteen",
-    15:  "fifteen",
-    16: "sixteen",
-    17: "seventeen",
-    18: "eighteen",
-    19: "nineteen"
-    };
+    9: "nine"};
 
     const tens = {
-    20: "twenty",
-    30: "thirty",
-    40: "forty",
-    50: "fifty",
-    60: "sixty",
-    70: "seventy"
-    80: "eighty"
-    90: "ninety"
+    1: "eleven",
+    2: "twelve",
+    3: "thirteen",
+    4: "fourteen",
+    5: "fifteen",
+    6: "sixteen",
+    7: "seventeen",
+    8: "eighteen",
+    9: "nineteen"
     };
    
+    const dozens = { 
+        1: "ten",
+        2: "twenty",
+        3: "thirty",
+        4: "forty",
+        5: "fifty",
+        6: "sixty",
+        7: "seventy",
+        8: "eighty",
+        9: "ninety",
+    };
+
+   
+   
 const stringNumber = number.toString();
-const dec = tens[stringNumber[0]];
-const units = digits[stringNumber[1]];
 
 
-if (number < 20) {
+if (stringNumber.length === 1) {
     return digits[number];
  }
 
-else if (number >= 20 && number < 100 && stringNumber[1] === 0){
-     return tens[stringNumber[0]];
+ if (stringNumber.length === 2 && stringNumber[1] === 0){  //10 20 30
+     return dozens[stringNumber[0]];
  }
+ else if (stringNumber.length === 2 && stringNumber[1] === 1){ //11 14 16
+     return tens[stringNumber]
+ }
+ else {
+     return `${dozens[stringNumber[0]]}${digits[stringNumber[1]]}`; //21 44 53
+    }
 
- else if (number >= 20 && number < 100){
-     return dec +' '+units;
- }
-if (stringNumber.length === 3 && stringNumber[1] === 0 && stringNumber[2] === 0){
-return (digits[stringNumber[0]] + ' hundred');
+    if (stringNumber.length === 3 && stringNumber[1] === 0 && stringNumber[2] === 0){ // 100 200 300
+        return `${digits[stringNumber[0]]} hundred`;
+    }
+    else if (stringNumber.length === 3 && stringNumber[1] === 0 && stringNumber[2] > 0){ // 102 304 507
+        return `${digits[stringNumber[0]]} hundred ${digits[stringNumber[2]]}`;
+    }
+
+else if (stringNumber.length === 3 && stringNumber[1] >= 1 && stringNumber[2] === 0){ // 110 220 340
+    return `${digits[stringNumber[0]]} hundred ${dozens[stringNumber[1]]}`;
 }
-  else if (stringNumber.length === 3 && stringNumber[1] >= 1 && stringNumber[2] === 0){
-      return (digits[stringNumber[0]] + ' hundred'+ tens[stringNumber[0]] +' dozen');
-  }
-  else if (stringNumber.length === 3 && stringNumber[1] >= 1 && stringNumber[2] >= 1){
-      return (digits[stringNumber[0]] + ' hundred' + tens[stringNumber[1]] +' dozen' + digits[stringNumber[2]]);
- }
+else if (stringNumber.length === 3 && stringNumber[1] === 1){ // 111 211 315
+    return `${digits[stringNumber[0]]} hundred ${tens[stringNumber.slice(1)]}`;
+}
+else {
+    return `${digits[stringNumber[0]]} hundred ${tens[stringNumber[1]]} ${digits[stringNumber[2]]}`;
+}
 };
