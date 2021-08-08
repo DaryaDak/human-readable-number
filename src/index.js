@@ -48,8 +48,6 @@ module.exports = function toReadable (number) {
     else if (stringNumber.length === '00' && stringNumber[1] === '0'){  //10 20 30
          return dozens[stringNumber[0]];
      }
-     else if (stringNumber.length === '00' && stringNumber[0] === '1' && stringNumber[0] < '2'){ //11 14 16
-         return tens[stringNumber];
-     }
+
     
     };
