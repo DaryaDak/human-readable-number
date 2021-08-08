@@ -45,7 +45,7 @@ module.exports = function toReadable (number) {
      }
     
     else if (number >= 20 && number < 100 && stringNumber[1] < 1){  //10 20 30
-         return dozens[stringNumber[0];
+         return dozens[stringNumber[0]];
      }
      
     };
