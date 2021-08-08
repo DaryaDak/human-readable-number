@@ -43,17 +43,24 @@ module.exports = function toReadable (number) {
     if (number < 20) {
         return digits[number];
      }
-    
-    else if (number >= 20 && number < 100 && stringNumber[1] < 1){  //10 20 30
+    //10 20 30
+    else if (number >= 20 && number < 100 && stringNumber[1] < 1){  
          return dozens[stringNumber[0]];
      }
-     else if (number >= 20 && number < 100){ //28 37 54
+    //28 37 54
+     else if (number >= 20 && number < 100){ 
          return `${dozens[stringNumber[0]]} ${digits[stringNumber[1]]}`
      }
+    //100 400 700
     else if (number >= 100 && stringNumber[1] < 1 && stringNumber[2] < 1){
         return `${digits[stringNumber[0]]} hundred`;
     }
+    //195 584 295
     else if (number >= 100 && stringNumber[1] > 1 && stringNumber[2] >= 1){
         return `${digits[stringNumber[0]]} hundred ${dozens[stringNumber[1]]} ${digits[stringNumber[2]]}`;
+    }
+    //180 340 620
+    else if (number >= 100 && number(stringNumber.slice(2)) === 0){
+        return digits[Math.floor(number/100)] + ' hundred' + dozens[stringNumber.slice(1,2))*10] + ' ' + digits[stringNumber.slice(2)];
     }
     };
