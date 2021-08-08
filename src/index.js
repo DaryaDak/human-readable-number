@@ -41,7 +41,7 @@ module.exports = function toReadable (number) {
     const stringNumber = number.toString();
     
     
-    if (stringNumber.length === '3' && stringNumber[1] === '0' && stringNumber[2] === '0'){ // 100 200 300
+    if (stringNumber.length === 3 && stringNumber[1] < 1 && stringNumber[2] < 1){ // 100 200 300
            return `${digits[stringNumber[0]]} hundred`;
        }
     };
