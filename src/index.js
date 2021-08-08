@@ -51,24 +51,5 @@ module.exports = function toReadable (number) {
      else if (stringNumber.length === '00' && stringNumber[1] === '1'){ //11 14 16
          return tens[stringNumber];
      }
-     else if (stringNumber.length === '00' && stringNumber[1] > '1') {
-         return `${dozens[stringNumber[0]]}${digits[stringNumber[1]]}`; //21 44 53
-        }
     
-    else if (stringNumber.length === '000' && stringNumber[1] === '0' && stringNumber[2] === '0'){ // 100 200 300
-            return `${digits[stringNumber[0]]} hundred`;
-        }
-    else if (stringNumber.length === '000' && stringNumber[1] === '0' && stringNumber[2] > '0'){ // 102 304 507
-            return `${digits[stringNumber[0]]} hundred ${digits[stringNumber[2]]}`;
-        }
-    
-    else if (stringNumber.length === '000' && stringNumber[1] >= '1' && stringNumber[2] === '0'){ // 110 220 340
-        return `${digits[stringNumber[0]]} hundred ${dozens[stringNumber[1]]}`;
-    }
-    else if (stringNumber.length === '000' && stringNumber[1] === '1'){ // 111 211 315
-        return `${digits[stringNumber[0]]} hundred ${tens[stringNumber.slice(1)]}`;
-    }
-    else {
-        return `${digits[stringNumber[0]]} hundred ${tens[stringNumber[1]]} ${digits[stringNumber[2]]}`;
-    }
     };
